@@ -32,5 +32,9 @@ The response is in the form of geojson. Example:
     ...
   ]
 }
-
 ```
+
+If there are more time provided, the following things can be improved:
+- an interactive views
+- make the tests for the API
+- pagination via web linking
