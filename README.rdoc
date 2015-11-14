@@ -1,28 +1,36 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An API endpoint that returns a filtered set of listings from the data provided (listings.csv)
 
-Things you may want to cover:
+API:
+GET /listings?min_price=100000&max_price=200000&min_bed=2&max_bed=2&min_bath=2&max_bath=2
 
-* Ruby version
+min_price: The minimum listing price in dollars.
+max_price: The maximum listing price in dollars.
+min_bed: The minimum number of bedrooms.
+max_bed: The maximum number of bedrooms.
+min_bath: The minimum number of bathrooms.
+max_bath: The maximum number of bathrooms.
 
-* System dependencies
+The response is in the form of geojson. Example:
 
-* Configuration
+```
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-112.1,33.4]},
+      "properties": {
+  "id": "123ABC", # CSV id
+  "price": 200000, # Price in Dollars
+  "street": "123 Walnut St",
+        "bedrooms": 3, # Bedrooms
+        "bathrooms": 2, # Bathrooms
+        "sq_ft": 1500 # Square Footage
+    },
+    ...
+  ]
+}
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
